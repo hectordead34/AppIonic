@@ -1,0 +1,18 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="profile-card" *ngIf="authService.user$ | async as user">
+    <ion-icon name="person-circle-outline" class="avatar-icon"></ion-icon>
+    <h2>Usuario Activo</h2>
+    <p class="user-email">{{ user.email }}</p>
+
+    <ion-button expand="block" color="danger" class="logout-btn" (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </div>
+</ion-content>

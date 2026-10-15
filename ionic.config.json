@@ -1,0 +1,7 @@
+{
+  "name": "AppTareas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

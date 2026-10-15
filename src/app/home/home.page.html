@@ -1,0 +1,105 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Gestor de Tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Formulario dinámico (Crear / Editar) -->
+  <ion-card class="task-form-card">
+    <ion-card-header>
+      <ion-card-title>
+        {{ editingTaskId ? 'Editar Tarea' : 'Nueva Tarea' }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-input
+          label="Título"
+          labelPlacement="floating"
+          [(ngModel)]="title"
+          placeholder="Ej: Tarea Doctora">
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-input
+          label="Descripción"
+          labelPlacement="floating"
+          [(ngModel)]="description"
+          placeholder="Ej: Aplicación de Firebase">
+        </ion-input>
+      </ion-item>
+
+      <!-- Selector de Imagen -->
+      <div class="image-picker-container">
+        <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+        
+        <ion-button fill="outline" expand="block" (click)="fileInput.click()">
+          <ion-icon name="image-outline" slot="start"></ion-icon>
+          {{ imagePreview ? 'Cambiar Imagen' : 'Adjuntar Imagen' }}
+        </ion-button>
+
+        <!-- Vista Previa de la Imagen -->
+        <div *ngIf="imagePreview" class="preview-box">
+          <img [src]="imagePreview" alt="Vista previa" />
+          <ion-button class="remove-btn" fill="clear" color="danger" (click)="removeSelectedImage()">
+            <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div style="display: flex; gap: 8px; margin-top: 12px;">
+        <ion-button expand="block" style="flex: 1;" (click)="saveTask()" [disabled]="!title.trim()">
+          <ion-icon [name]="editingTaskId ? 'checkmark-outline' : 'add-outline'" slot="start"></ion-icon>
+          {{ editingTaskId ? 'Actualizar Tarea' : 'Guardar Tarea' }}
+        </ion-button>
+
+        <ion-button *ngIf="editingTaskId" expand="block" color="medium" fill="outline" (click)="cancelEdit()">
+          <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de Tareas -->
+  <h2 class="section-title">Mis Tareas</h2>
+
+  <!-- Indicador de Carga -->
+  <div *ngIf="loading" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
+    <p style="color: #94a3b8; margin-top: 8px;">Cargando tareas...</p>
+  </div>
+
+  <!-- Estado Vacío -->
+  <div *ngIf="!loading && tasks.length === 0" class="ion-text-center ion-padding">
+    <p style="color: #64748b;">No tienes tareas registradas aún.</p>
+  </div>
+
+  <!-- Lista de Tareas -->
+  <ion-list class="tasks-list" *ngIf="!loading && tasks.length > 0">
+    <ion-item class="task-item" lines="none" *ngFor="let task of tasks">
+      
+      <!-- Miniatura de Imagen en la Lista -->
+      <ion-thumbnail slot="start" *ngIf="task.imageUrl" class="task-thumb">
+        <img [src]="task.imageUrl" alt="Foto Tarea" />
+      </ion-thumbnail>
+
+      <ion-label>
+        <h2>{{ task.title }}</h2>
+        <p>{{ task.description }}</p>
+      </ion-label>
+
+      <!-- Botón Editar -->
+      <ion-button slot="end" fill="clear" color="primary" (click)="selectTaskToEdit(task)">
+        <ion-icon name="create-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <!-- Botón Eliminar -->
+      <ion-button slot="end" fill="clear" color="danger" (click)="deleteTask(task.id)">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

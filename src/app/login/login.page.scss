@@ -1,0 +1,74 @@
+ion-content {
+  --background: #121824;
+}
+
+.auth-container {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  background: #1a2332;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  padding: 8px 4px;
+
+  .auth-header {
+    text-align: center;
+    padding: 24px 16px 12px;
+
+    .app-logo-icon {
+      font-size: 56px;
+      color: #3880ff;
+      margin-bottom: 8px;
+    }
+
+    ion-card-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    ion-card-subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+  }
+
+  ion-item {
+    --background: #0f172a;
+    --border-radius: 12px;
+    --padding-start: 14px;
+    --highlight-color-focused: #3880ff;
+    margin-bottom: 14px;
+
+    ion-input {
+      --color: #ffffff;
+      --placeholder-color: #64748b;
+    }
+  }
+
+  .auth-submit-btn {
+    --border-radius: 12px;
+    font-weight: 600;
+    height: 48px;
+    margin-top: 20px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(56, 128, 255, 0.3);
+  }
+
+  .toggle-auth-btn {
+    --color: #3880ff;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    text-transform: none;
+  }
+}

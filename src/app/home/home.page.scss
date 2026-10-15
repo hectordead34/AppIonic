@@ -1,0 +1,120 @@
+ion-content {
+  --background: #121824;
+}
+
+// Tarjeta del formulario de nueva tarea
+.task-form-card {
+  border-radius: 20px;
+  background: #1a2332;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin-bottom: 24px;
+
+  ion-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3880ff;
+  }
+
+  ion-item {
+    --background: #0f172a;
+    --border-radius: 12px;
+    --padding-start: 14px;
+    margin-bottom: 12px;
+
+    ion-input {
+      --color: #ffffff;
+      --placeholder-color: #64748b;
+    }
+  }
+
+  ion-button {
+    --border-radius: 12px;
+    font-weight: 600;
+    height: 44px;
+  }
+}
+
+// Selector y vista previa de imagen
+.image-picker-container {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  .preview-box {
+    position: relative;
+    margin-top: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 180px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .remove-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      font-size: 24px;
+      --padding-start: 0;
+      --padding-end: 0;
+      margin: 0;
+    }
+  }
+}
+
+// Título de la sección
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 20px 0 12px 8px;
+}
+
+// Lista de tareas estilo tarjetas elevadas
+.tasks-list {
+  background: transparent;
+  padding: 0;
+
+  .task-item {
+    --background: #1a2332;
+    --border-radius: 16px;
+    --padding-start: 16px;
+    --inner-padding-end: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid #3880ff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    ion-button {
+      --color: #ff4961;
+    }
+  }
+}
+
+// Miniatura en la lista de tareas
+.task-thumb {
+  --size: 50px;
+  --border-radius: 10px;
+  margin-right: 12px;
+
+  img {
+    border-radius: 10px;
+    object-fit: cover;
+  }
+}
